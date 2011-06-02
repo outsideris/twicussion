@@ -1,2 +1,7 @@
-- each tweet in tweets
-  li @#{tweet.from_user} : #{tweet.text} #{tweet.id_str}
+h2 Request For Comments - 
+   a(href='http://blog.creation.net/495', target='_blank') 웹 프론트엔드 개발자에 대한 소회
+p 이 페이지는 트위터에서 시작된 프론트앤드 개발직군에 대한 논의를 모아보기위한 페이지 입니다.
+  | 트위터에서 #front_end 해쉬태그를 사용하시면 논의에 참여하실 수 있습니다.
+ul
+   - each tweet in tweets
+      li @#{tweet.from_user} : #{tweet.text} #{tweet.id_str}
