@@ -5,3 +5,25 @@ body {
 a {
   color: #00b7ff;
 }
+ul {
+  list-style: none;
+  margin-top: 50px;
+}
+li {
+  margin-bottom: 10px;
+  border-bottom: 1px solid;
+}
+img {
+  float: left;
+}
+div.author {
+  float: left;
+  margin-right: 10px;
+  height: 48px;
+}
+time {
+  font-size: 0.8em;
+}
+div.clear {
+  clear: both;
+}
