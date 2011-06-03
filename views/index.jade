@@ -4,4 +4,4 @@ p 이 페이지는 트위터에서 시작된 프론트앤드 개발직군에 대
   | 트위터에서 #front_end 해쉬태그를 사용하시면 논의에 참여하실 수 있습니다.
 ul
    - each tweet in tweets
-      li @#{tweet.from_user} : #{tweet.text} #{tweet.id_str}
+     li @#{tweet.from_user} : #{tweet.text} at #{tweet.created_at}

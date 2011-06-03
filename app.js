@@ -50,11 +50,13 @@ if (!module.parent) {
 
 var tweets = [];
 var maxId = null;
+var tweetsWithoutHashtag = [
+   '75559849236234240'
+];
 
 var helper = {
    getTwitsbyHashtag: function(req, res, param) {
       twit.search('#front_end', param, function(data) {
-         console.log(data.results.length);
          maxId = data.max_id;
          if (data.results.length > 0) {
             tweets = tweets.concat(data.results); 
@@ -63,12 +65,30 @@ var helper = {
          if (data.next_page) {
             helper.getTwitsbyHashtag(req, res, {page:data.page+1, max_id:data.max_id, rpp:100});
          } else {
+            helper.getSpecificTweet(req, res);
+         }
+      });
+   }
+ , getSpecificTweet: function(req, res) {
+      twit.get('/statuses/show/' + tweetsWithoutHashtag.pop() + '.json', {include_entities:true}, function(data) {
+         if (data.user) {
+            var tweet = {
+               'profile_image_url':data.user.profile_image_url
+             , 'created_at': data.created_at
+             , 'from_user': data.user.screen_name
+             , 'text': data.text
+            };
+            tweets.push(tweet); 
+         }
+         if (tweetsWithoutHashtag.length > 0) {
+            helper.getSpecificTweet(req, res); 
+         } else {
             //sys.puts(sys.inspect(tweets)); 
-            sys.puts(tweets.length);
+            //sys.puts(tweets.length);
             res.render('index', {
                tweets: tweets
             });
-         }
-      });
+         } 
+      }); 
    }
 };
