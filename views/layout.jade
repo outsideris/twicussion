@@ -1,6 +1,11 @@
-!!!
-html
+!!! 5
+html(lang='ko')
   head
     title #front_end
     link(rel='stylesheet', href='/stylesheets/style.css')
   body!= body
+    script(src='http://platform.twitter.com/anywhere.js?id=p4rK1CCM5Dz3o59lEcJxA&amp;v=1')
+    script
+       twttr.anywhere(function(twitter) {
+          twitter.hovercards();
+       });
