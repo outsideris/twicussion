@@ -15,10 +15,12 @@ li {
 }
 img {
   float: left;
+  width: 48px;
+  height: 48px;
 }
 div.author {
   float: left;
-  margin-right: 10px;
+  margin-right: 5px;
   height: 48px;
 }
 time {
