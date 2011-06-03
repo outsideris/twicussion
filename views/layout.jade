@@ -1,11 +1,25 @@
 !!! 5
 html(lang='ko')
   head
+    meta(charset='UTF-8')
     title #front_end
     link(rel='stylesheet', href='/stylesheets/style.css')
   body!= body
     script(src='http://platform.twitter.com/anywhere.js?id=p4rK1CCM5Dz3o59lEcJxA&amp;v=1')
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js')
+    - var regex = /\b(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?\b/gi;
     script
-       twttr.anywhere(function(twitter) {
+      $(document).ready(function() {
+        twttr.anywhere(function(twitter) {
           twitter.hovercards();
-       });
+        });
+        var urlReplacer = function(str) {
+          return str.link(str);
+        }
+        var regex = !{regex};
+        $('.text').each(function() {
+           var obj =$(this);
+           obj.text(obj.text().replace(regex, urlReplacer)); 
+        });
+      });
+       
