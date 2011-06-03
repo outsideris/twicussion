@@ -5,7 +5,8 @@
 
 var express = require('express')
   , twitter = require('twitter')
-  , sys = require('sys');
+  , sys = require('sys')
+  , tweetsWithoutHashtag = require('./tweets')
 
 var twit = new twitter({});
 
@@ -50,9 +51,6 @@ if (!module.parent) {
 
 var tweets = [];
 var maxId = null;
-var tweetsWithoutHashtag = [
-   '75559849236234240'
-];
 
 var helper = {
    getTwitsbyHashtag: function(req, res, param) {
