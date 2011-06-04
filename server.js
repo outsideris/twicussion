@@ -62,7 +62,11 @@ var helper = {
       twit.search('#front_end', param, function(data) {
          maxId = data.max_id;
          if (data.results.length > 0) {
-            tweets = tweets.concat(data.results); 
+            if (param.since_id) {
+               tweets = data.results.concat(tweets); 
+            } else {
+               tweets = tweets.concat(data.results); 
+            }
             //sys.puts(sys.inspect(data));
          }
          if (data.next_page) {
