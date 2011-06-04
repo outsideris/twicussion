@@ -8,7 +8,12 @@ var express = require('express')
   , sys = require('sys')
   , tweetsWithoutHashtag = require('./tweets')
 
-var twit = new twitter({});
+var twit = new twitter({
+    consumer_key: 'p4rK1CCM5Dz3o59lEcJxA',
+    consumer_secret: 'PkELdKz5gbuPmT7teeZhrenhTN72ubDqN7wZMJGw',
+    access_token_key: '7932892-6mIAdCt0bXzGV6Xemy0gS7rq96gSAImOxFePwS0Jgi',
+    access_token_secret: 'Hn6cLF8C9IZ7ikM1ibvhjqDJ9f71TdeqXN6Zthm8'
+});
 
 var app = module.exports = express.createServer();
 
