@@ -60,7 +60,7 @@ var maxId = null;
 var helper = {
    getTwitsbyHashtag: function(req, res, param) {
       twit.search('#front_end', param, function(data) {
-         maxId = data.max_id;
+         maxId = data.max_id_str;
          if (data.results.length > 0) {
             if (param.since_id) {
                tweets = data.results.concat(tweets); 
