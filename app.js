@@ -77,6 +77,8 @@ var helper = {
              , 'text': data.text
             };
             tweets.push(tweet); 
+         } else {
+            console.log('data is not found.')
          }
          if (tweetsWithoutHashtag.length > 0) {
             helper.getSpecificTweet(req, res); 
