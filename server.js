@@ -6,8 +6,10 @@
 var express = require('express')
   , twitter = require('twitter')
   , sys = require('sys')
-  , tweetsWithoutHashtag = require('./tweets')
-
+  , url = require('url')
+  , qs = require('querystring')
+//  , tweetsWithoutHashtag = require('./tweets')
+  , tweetsWithoutHashtag = []; 
 var twit = new twitter({
     consumer_key: 'p4rK1CCM5Dz3o59lEcJxA',
     consumer_secret: 'PkELdKz5gbuPmT7teeZhrenhTN72ubDqN7wZMJGw',
@@ -45,6 +47,23 @@ app.get('/', function(req, res){
       params.since_id = maxId; 
    }
    helper.getTwitsbyHashtag(req, res, params);
+});
+
+app.get('/more', function(req, res) {
+   var params = qs.parse(url.parse(req.url).query)
+     , id = params.id
+     , BreakException = {};
+
+   try {
+      tweets.forEach(function(element, index) {
+         if(element.id == id) {
+           res.send({tweets:tweets.slice(index+1, index+21)});
+           throw BreakException;
+         }
+      });
+   } catch (e) {
+      if (e !== BreakException) throw e; 
+   }
 });
 
 // Only listen on $ node app.js
@@ -95,7 +114,7 @@ var helper = {
             //sys.puts(sys.inspect(tweets)); 
             //sys.puts(tweets.length);
             res.render('index', {
-               tweets: tweets
+               tweets: tweets.slice(0, 20)
             });
          } 
       }); 

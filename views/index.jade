@@ -7,7 +7,7 @@ p 이 페이지는 트위터에서 시작된 프론트앤드 개발직군에 대
   | 빠진 트윗이 있으면 @outsider__ 로 알려주시면 추가하겠습니다.
 ul
    - each tweet in tweets
-     li 
+     li(id='tweet-' + tweet.id_str) 
         img(src=''+tweet.profile_image_url, alt=''+tweet.from_user).profile 
         div.author
           @#{tweet.from_user} : 
@@ -16,3 +16,4 @@ ul
         time
           at #{tweet.created_at} 
         div.clear
+input(type='button', value='more')#more

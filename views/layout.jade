@@ -23,8 +23,23 @@ html(lang='ko')
            var obj =$(this);
            obj.html(obj.text().replace(regex, urlReplacer)); 
         });
+        $('#more').click(function() {
+          $.getJSON('/more', {id:$('ul li').last().attr('id').replace('tweet-', '')}, function(data) {
+             data = data.tweets;
+             var htmlStr='';
+             for (var i = 0; i < data.length; i++) {
+               htmlStr += '<li id="tweet-' + data[i].id_str + '"><img src="'+ data[i].profile_image_url +'", alt="'+ data[i].from_user +'" class="profile">';
+               htmlStr += '<div class="author">@'+ data[i].from_user +' : </div><div class="text">'+ data[i].text.replace(regex, urlReplacer)  +'</div>';
+               htmlStr += '<time><at>'+ data[i].created_at +'</at></time><div class="clear"></div></li>';
+             }
+             $('ul').append(htmlStr); 
+             twttr.anywhere(function(twitter) {
+                twitter.hovercards();
+             });
+          });
+        });
       });
-       
+
       // google analytics
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-1316180-5']);
