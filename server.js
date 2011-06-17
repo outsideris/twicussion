@@ -8,8 +8,8 @@ var express = require('express')
   , sys = require('sys')
   , url = require('url')
   , qs = require('querystring')
-//  , tweetsWithoutHashtag = require('./tweets')
-  , tweetsWithoutHashtag = []; 
+  , tweetsWithoutHashtag = require('./tweets')
+
 var twit = new twitter({
     consumer_key: 'p4rK1CCM5Dz3o59lEcJxA',
     consumer_secret: 'PkELdKz5gbuPmT7teeZhrenhTN72ubDqN7wZMJGw',
