@@ -1,0 +1,20 @@
+{
+  "name": "twicussion"
+, "description": "Twicussion prototyping for #front_end hash tag"
+, "version": "0.0.1"
+, "author" : "Outsider <outsideris@gmail.com> (http://sideeffect.kr) (http://blog.outsider.ne.kr)"
+, "repository": {
+    "type": "git"
+  , "url": "git://github.com/outsideris/twicussion.git"
+  }
+, "private": true
+, "dependencies": {
+    "express": "2.3.10"
+  , "jade": ">= 0.0.1"
+  , "stylus": ">= 0.0.1"
+  , "twitter": "0.1.17"
+  }
+, "scripts": {
+  , "start": "node server.js"
+  }
+}
