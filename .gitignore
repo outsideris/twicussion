@@ -1,3 +1,4 @@
 .monitor
 node_modules/
 .nodester.appconfig
+style.css
